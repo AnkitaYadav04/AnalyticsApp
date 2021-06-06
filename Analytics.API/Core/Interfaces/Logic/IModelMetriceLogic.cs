@@ -1,4 +1,5 @@
 ﻿using Analytics.API.Models;
+using Analytics.API.Models.ViewModel.Metrice;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

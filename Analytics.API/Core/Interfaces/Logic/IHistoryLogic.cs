@@ -1,4 +1,5 @@
 ﻿using Analytics.API.Models;
+using Analytics.API.Models.ViewModel.History;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

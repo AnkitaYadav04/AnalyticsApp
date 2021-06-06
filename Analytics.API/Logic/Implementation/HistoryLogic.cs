@@ -2,6 +2,7 @@
 using Analytics.API.Core.Interfaces.Logic;
 using Analytics.API.Models;
 using Analytics.API.Models.DTO;
+using Analytics.API.Models.ViewModel.History;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace Analytics.API.Logic.Implementation
 
         public async Task<List<HistoryViewModel>> GetHistoryDetailsAsync(DateTime? fromDate, DateTime? toDate, string filterModel, string filterCommodity)
         {
-           
+            if (fromDate != null && toDate != null && fromDate > toDate) 
+                throw new InvalidOperationException();
             var response = await _modelDetailRepository.GetHistoryDetails(fromDate, toDate, filterModel, filterCommodity);
 
             return _mapper.Map<List<HistoryDTO>, List<HistoryViewModel>>(response);

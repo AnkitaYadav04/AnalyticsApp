@@ -67,7 +67,7 @@ namespace Analytics.API.Data.Repository
         }
 
 
-        public async Task<List<ModelMetericsDTO>> GetModelMetriceDetails()
+        public async Task<List<ModelDTO>> GetModelDetails()
         {
             var response =  await (from details in _dbContext.ModelDetails
                                   join contract in _dbContext.ModelContracts on details.ModelContractId equals contract.Id
@@ -81,12 +81,12 @@ namespace Analytics.API.Data.Repository
                                   }).ToListAsync();
 
             var modelResponse = response.GroupBy(x => new { x.Model, x.Commodity })
-             .Select(y => new ModelMetericsDTO
+             .Select(y => new ModelDTO
              {
                  Model = y.Key.Model,
                  Commodity = y.Key.Commodity,
                  Details = y.Select(x =>
-                 new ModelMericeDetailDTO
+                 new ModelDetailDTO
                  {
                      Date = x.Details.Date,
                      NewTradeAction = x.Details.NewTradeAction,
@@ -95,6 +95,50 @@ namespace Analytics.API.Data.Repository
                      Price = x.Details.Price,
                      Contract = x.contractName
                      
+                 })
+
+             }).ToList();
+
+            return modelResponse;
+        }
+
+        public async Task<List<ModelDTO>> GetModelDetailsWithFilter(DateTime? fromDate = null,
+            DateTime? toDate = null, string filterModel = null, string filterCommodity = null)
+        {
+            var response = await 
+                (from details in _dbContext.ModelDetails
+                  .Where(x =>
+                    (fromDate == null || x.Date >= fromDate)
+                    && (toDate == null || x.Date <= toDate))
+                  join contract in _dbContext.ModelContracts on details.ModelContractId equals contract.Id
+                  join model in _dbContext.Models on contract.ModelId equals model.Id
+                  where
+                    (string.IsNullOrEmpty(filterModel) || filterModel.ToLower().Equals(model.ModelName.ToLower()))
+                     && (string.IsNullOrEmpty(filterCommodity) || filterCommodity.ToLower().Equals(model.Commodity.ToLower()))
+                  orderby details.Date descending
+                  select new
+                  {
+                      Commodity = model.Commodity,
+                      Model = model.ModelName,
+                      Details = details,
+                      contractName = contract.Contract
+                  }).ToListAsync();
+
+            var modelResponse = response.GroupBy(x => new { x.Model, x.Commodity })
+             .Select(y => new ModelDTO
+             {
+                 Model = y.Key.Model,
+                 Commodity = y.Key.Commodity,
+                 Details = y.Select(x =>
+                 new ModelDetailDTO
+                 {
+                     Date = x.Details.Date,
+                     NewTradeAction = x.Details.NewTradeAction,
+                     CurrentPosition = x.Details.Position,
+                     PnlDaily = x.Details.PnlDaily,
+                     Price = x.Details.Price,
+                     Contract = x.contractName
+
                  })
 
              }).ToList();

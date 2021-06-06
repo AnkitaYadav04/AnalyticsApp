@@ -32,8 +32,8 @@ namespace Analytics.API.Test.LogicTest
         [Fact]
         public void AnalyticsLogic_GetAnalyticsDetailsAsync_NoRecordInDb_ShouldReturnEmptyList()
         {
-            _modelDetailRepository.Setup(x => x.GetModelMetriceDetails())
-                .ReturnsAsync(new List<ModelMetericsDTO>());
+            _modelDetailRepository.Setup(x => x.GetModelDetails())
+                .ReturnsAsync(new List<ModelDTO>());
 
             var response = _analyticsLogic.GetAnalyticsDetailsAsync().Result;
 
@@ -43,7 +43,7 @@ namespace Analytics.API.Test.LogicTest
         [Fact]
         public void AnalyticsLogic_GetAnalyticsDetailsAsync_RecordExistInDb_ShouldReturnList()
         {
-            _modelDetailRepository.Setup(x => x.GetModelMetriceDetails())
+            _modelDetailRepository.Setup(x => x.GetModelDetails())
                 .ReturnsAsync(ModelTestData.GetModelMetricsTestData());
 
 

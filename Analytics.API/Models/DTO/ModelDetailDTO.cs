@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Analytics.API.Models.Common
+namespace Analytics.API.Models.DTO
 {
-    public class ModelDetails
+    public class ModelDetailDTO
     {
         public double CurrentPosition { get; set; }
         public double PnlDaily { get; set; }
@@ -12,4 +12,3 @@ namespace Analytics.API.Models.Common
         public string Contract { get; set; }
     }
 }
-    

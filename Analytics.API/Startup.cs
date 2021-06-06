@@ -1,3 +1,4 @@
+using Analytics.API.Core.Extensions;
 using Analytics.API.Core.Interfaces.Database;
 using Analytics.API.Core.Interfaces.Logic;
 using Analytics.API.Data;
@@ -66,12 +67,7 @@ namespace Analytics.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.ConfigureExceptionHandler();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

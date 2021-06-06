@@ -9,28 +9,17 @@ namespace Analytics.API.Test.MockData
     public static class ModelTestData
     {
 
-        public static List<ModelMetericsDTO> GetModelMetricsTestData()
+        public static List<ModelDTO> GetModelMetricsTestData()
         {
-            var modelMetericsRecord = new List<ModelMetericsDTO>()
+            var modelMetericsRecord = new List<ModelDTO>()
             {
-                new ModelMetericsDTO
+                new ModelDTO
                 {
                     Commodity = "CommodityTest",
                     Model ="ModelTest",
-                    DrawdownYTD = 1,
-                    PnLLTD = 1,
-                    PnLYTDDetails = new List<PnLYTDDetails>
+                    Details = new List<ModelDetailDTO>
                     {
-                       new PnLYTDDetails
-                       {
-                            PnLYTD = new List<Double>{ 12},
-                            TotalPnLYTD =11,
-                            Year = 2021
-                       }
-                    },
-                    Details = new List<ModelMericeDetailDTO>
-                    {
-                        new ModelMericeDetailDTO
+                        new ModelDetailDTO
                         {
                             Contract = "Contract1",
                             CurrentPosition = 1,
@@ -40,7 +29,7 @@ namespace Analytics.API.Test.MockData
                             Price = 100
 
                         },
-                         new ModelMericeDetailDTO
+                         new ModelDetailDTO
                          {
                             Contract = "Contract2",
                             CurrentPosition = 2,

@@ -9,7 +9,7 @@ namespace Analytics.API.Mapper
     {
         public AnalyticsViewModelProfile()
         {
-            CreateMap<ModelMetericsDTO, AnalyticsViewModel>();
+            CreateMap<ModelDTO, AnalyticsViewModel>();
         }
     }
 }

@@ -24,8 +24,8 @@ namespace Analytics.API.Test.LogicTest
         [Fact]
         public void ModelMetriceLogic_GetModelMetriceDetailsAsync_NoRecordInDb_ShouldReturnEmptyList()
         {
-            _modelDetailRepository.Setup(x => x.GetModelMetriceDetails())
-                .ReturnsAsync(new List<Analytics.API.Data.DTO.ModelMetericsDTO>());
+            _modelDetailRepository.Setup(x => x.GetModelDetails())
+                .ReturnsAsync(new List<Analytics.API.Data.DTO.ModelDTO>());
 
             var response = _modelMetriceLogic.GetModelMetriceDetailsAsync().Result;
 
@@ -35,7 +35,7 @@ namespace Analytics.API.Test.LogicTest
         [Fact]
         public void ModelMetriceLogic_GetModelMetriceDetailsAsync_RecordExistInDb_ShouldReturnList()
         {
-            _modelDetailRepository.Setup(x => x.GetModelMetriceDetails())
+            _modelDetailRepository.Setup(x => x.GetModelDetails())
                 .ReturnsAsync(ModelTestData.GetModelMetricsTestData());
 
 
@@ -49,7 +49,7 @@ namespace Analytics.API.Test.LogicTest
         [Fact]
         public void ModelMetriceLogic_GetModelMetriceDetailsAsync_RecordExistInDb_ShouldReturnLatestDetails()
         {
-            _modelDetailRepository.Setup(x => x.GetModelMetriceDetails())
+            _modelDetailRepository.Setup(x => x.GetModelDetails())
                 .ReturnsAsync(ModelTestData.GetModelMetricsTestData());
 
 

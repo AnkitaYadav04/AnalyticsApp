@@ -1,5 +1,6 @@
 ﻿using Analytics.API.Core.Interfaces.Logic;
 using Analytics.API.Models;
+using Analytics.API.Models.ViewModel.Metrice;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -19,6 +20,10 @@ namespace Analytics.API.Controllers
             _modelMetriceLogic = modelMetriceLogic;
         }
 
+        /// <summary>
+        /// This Api returns all the model Metrices
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("",Name = "GetModelMatertics")]
         public async Task<ActionResult<List<ModelMericeViewModel>>> GetModelMatertics()
         {

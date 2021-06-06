@@ -1,5 +1,5 @@
-﻿using Analytics.API.Models;
-using Analytics.API.Models.DTO;
+﻿using Analytics.API.Models.DTO;
+using Analytics.API.Models.ViewModel.History;
 using AutoMapper;
 
 namespace Analytics.API.Mapper
@@ -8,7 +8,9 @@ namespace Analytics.API.Mapper
     {
         public HistoryViewModelProfile()
         {
-            CreateMap<HistoryDTO, HistoryViewModel>();
+            CreateMap<HistoryDTO, HistoryViewModel>()
+                .ForMember(x => x.Model, opt => opt.MapFrom(y => y.Model.Trim()))
+                .ForMember(x => x.Commodity, opt => opt.MapFrom(y => y.Commodity.Trim()));
             CreateMap<HistoryDetails, HistoryDetailsViewModel>();
         }
     }

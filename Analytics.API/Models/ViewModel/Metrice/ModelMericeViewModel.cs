@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Analytics.API.Models
+namespace Analytics.API.Models.ViewModel.Metrice
 {
     public class ModelMericeViewModel
     {
