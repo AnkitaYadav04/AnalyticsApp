@@ -41,7 +41,8 @@ namespace Analytics.API.Test.LogicTest
             string filterModel = string.Empty;
             string filterCommodity = string.Empty;
 
-            _modelDetailRepository.Setup(x => x.GetHistoryDetails(fromDate, toDate, filterModel, filterCommodity))
+            _modelDetailRepository.Setup(x => x.GetHistoryDetails(It.IsAny<DateTime?>(), It.IsAny<DateTime?>(),
+                It.IsAny<string>(), It.IsAny<string>()))
                 .ReturnsAsync(new List<HistoryDTO>());
 
             var response = _HistoryLogic.GetHistoryDetailsAsync(fromDate, toDate, filterModel, filterCommodity).Result;
@@ -51,14 +52,37 @@ namespace Analytics.API.Test.LogicTest
         }
 
         [Fact]
-        public void HistoryLogic_GetHistoryDetailsAsync_RecordInDb_ShouldReturnHistoryDetails()
+        public async Task HistoryLogic_GetHistoryDetailsAsync_InvalidDateRange_ShouldThrowException()
         {
             DateTime? fromDate = DateTime.Now;
             DateTime? toDate = DateTime.Now.AddDays(-1);
             string filterModel = string.Empty;
+            string filterCommodity = string.Empty;
+
+            _modelDetailRepository.Setup(x => x.GetHistoryDetails(It.IsAny<DateTime?>(), It.IsAny<DateTime?>(),
+                It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(new List<HistoryDTO>());
+
+            var exception = await Record.ExceptionAsync(() =>
+               _HistoryLogic.GetHistoryDetailsAsync(fromDate, toDate, filterModel, filterCommodity));
+
+            ///Assert
+            Assert.NotNull(exception);
+            Assert.Equal("Invalid Date Range", exception.Message);
+        }
+
+
+
+        [Fact]
+        public void HistoryLogic_GetHistoryDetailsAsync_RecordInDb_ShouldReturnHistoryDetails()
+        {
+            DateTime? toDate = DateTime.Now;
+            DateTime? fromDate = DateTime.Now.AddDays(-1);
+            string filterModel = string.Empty;
             string filterCommodity = null;
 
-            _modelDetailRepository.Setup(x => x.GetHistoryDetails(fromDate, toDate, filterModel, filterCommodity))
+            _modelDetailRepository.Setup(x => x.GetHistoryDetails(It.IsAny<DateTime?>(), It.IsAny<DateTime?>(),
+                It.IsAny<string>(), It.IsAny<string>()))
                     .ReturnsAsync(ModelTestData.GetHistoryTestData());
 
             var response = _HistoryLogic.GetHistoryDetailsAsync(fromDate, toDate, filterModel, filterCommodity).Result;

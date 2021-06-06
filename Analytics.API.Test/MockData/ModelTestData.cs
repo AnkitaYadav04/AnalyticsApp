@@ -9,7 +9,7 @@ namespace Analytics.API.Test.MockData
     public static class ModelTestData
     {
 
-        public static List<ModelDTO> GetModelMetricsTestData()
+        public static List<ModelDTO> GetModelTestData()
         {
             var modelMetericsRecord = new List<ModelDTO>()
             {

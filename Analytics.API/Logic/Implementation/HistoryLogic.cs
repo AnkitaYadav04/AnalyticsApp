@@ -24,7 +24,7 @@ namespace Analytics.API.Logic.Implementation
         public async Task<List<HistoryViewModel>> GetHistoryDetailsAsync(DateTime? fromDate, DateTime? toDate, string filterModel, string filterCommodity)
         {
             if (fromDate != null && toDate != null && fromDate > toDate) 
-                throw new InvalidOperationException();
+                throw new Exception("Invalid Date Range");
             var response = await _modelDetailRepository.GetHistoryDetails(fromDate, toDate, filterModel, filterCommodity);
 
             return _mapper.Map<List<HistoryDTO>, List<HistoryViewModel>>(response);

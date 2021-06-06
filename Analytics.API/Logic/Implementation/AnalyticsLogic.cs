@@ -25,9 +25,10 @@ namespace Analytics.API.Logic.Implementation
             if (fromDate != null && toDate != null && fromDate > toDate)
                 throw new InvalidOperationException("Invalid Date range");
 
-            var responseData = await _modelDetailRepository.GetModelDetailsWithFilter(fromDate,toDate,filterModel,filterCommodity);
+            var responseData = await _modelDetailRepository.GetModelDetailsWithFilter(fromDate,toDate,filterModel,filterCommodity)
+                                ??new List<Data.DTO.ModelDTO>();
 
-            var analyticResponseData = responseData.Select(response =>
+            var analyticResponseData = responseData?.Select(response =>
                 new AnalyticsViewModel
                 {
                     Commodity = response.Commodity?.Trim(),

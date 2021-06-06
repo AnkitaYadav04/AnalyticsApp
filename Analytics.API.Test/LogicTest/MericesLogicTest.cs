@@ -36,7 +36,7 @@ namespace Analytics.API.Test.LogicTest
         public void ModelMetriceLogic_GetModelMetriceDetailsAsync_RecordExistInDb_ShouldReturnList()
         {
             _modelDetailRepository.Setup(x => x.GetModelDetails())
-                .ReturnsAsync(ModelTestData.GetModelMetricsTestData());
+                .ReturnsAsync(ModelTestData.GetModelTestData());
 
 
             var response = _modelMetriceLogic.GetModelMetriceDetailsAsync().Result;
@@ -50,7 +50,7 @@ namespace Analytics.API.Test.LogicTest
         public void ModelMetriceLogic_GetModelMetriceDetailsAsync_RecordExistInDb_ShouldReturnLatestDetails()
         {
             _modelDetailRepository.Setup(x => x.GetModelDetails())
-                .ReturnsAsync(ModelTestData.GetModelMetricsTestData());
+                .ReturnsAsync(ModelTestData.GetModelTestData());
 
 
             var response = _modelMetriceLogic.GetModelMetriceDetailsAsync().Result;

@@ -32,19 +32,31 @@ namespace Analytics.API.Test.LogicTest
         [Fact]
         public void AnalyticsLogic_GetAnalyticsDetailsAsync_NoRecordInDb_ShouldReturnEmptyList()
         {
-            _modelDetailRepository.Setup(x => x.GetModelDetails())
+            DateTime? fromDate = DateTime.Now.AddDays(-1);
+            DateTime? toDate = DateTime.Now;
+            string filterModel = string.Empty;
+            string filterCommodity = null;
+
+            _modelDetailRepository.Setup(x => x.GetModelDetailsWithFilter(It.IsAny<DateTime>(), It.IsAny<DateTime>(),
+                It.IsAny<string>(), It.IsAny<string>()))
                 .ReturnsAsync(new List<ModelDTO>());
 
-            var response = _analyticsLogic.GetAnalyticsDetailsAsync().Result;
+            var response = _analyticsLogic.GetAnalyticsDetailsAsync(fromDate, toDate, filterModel, filterCommodity).Result;
 
-            Assert.Empty(response);
+            Assert.NotNull(response);
         }
 
         [Fact]
         public void AnalyticsLogic_GetAnalyticsDetailsAsync_RecordExistInDb_ShouldReturnList()
         {
-            _modelDetailRepository.Setup(x => x.GetModelDetails())
-                .ReturnsAsync(ModelTestData.GetModelMetricsTestData());
+            DateTime? fromDate = DateTime.Now;
+            DateTime? toDate = DateTime.Now.AddDays(-1);
+            string filterModel = string.Empty;
+            string filterCommodity = null;
+
+            _modelDetailRepository.Setup(x => x.GetModelDetailsWithFilter(It.IsAny<DateTime?>(), It.IsAny<DateTime?>(),
+                It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(ModelTestData.GetModelTestData());
 
 
             var response = _analyticsLogic.GetAnalyticsDetailsAsync().Result;
