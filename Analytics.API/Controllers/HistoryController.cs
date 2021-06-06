@@ -1,11 +1,9 @@
-﻿using AngaloAmericanAnalytics.API.Core.Interfaces.Logic;
+﻿using Analytics.API.Core.Interfaces.Logic;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace AngaloAmericanAnalytics.API.Controllers
+namespace Analytics.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

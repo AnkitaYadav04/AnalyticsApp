@@ -1,4 +1,4 @@
-﻿using AngaloAmericanAnalytics.API.Data.Entity;
+﻿using Analytics.API.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Data
+namespace Analytics.API.Data
 {
-    public class AngaloAmericanAnalyticsDbContext: DbContext
+    public class AnalyticsDbContext: DbContext
     { 
 
         private readonly IConfiguration _configuration;
         public const string DefaultSchema = "dbo";
-        public AngaloAmericanAnalyticsDbContext(DbContextOptions dbContextOptions, IConfiguration configuration):base(dbContextOptions)
+        public AnalyticsDbContext(DbContextOptions dbContextOptions, IConfiguration configuration):base(dbContextOptions)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }

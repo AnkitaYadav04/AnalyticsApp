@@ -1,12 +1,12 @@
 ﻿
-using AngaloAmericanAnalytics.API.Models;
-using AngaloAmericanAnalytics.API.Models.Common;
+using Analytics.API.Models;
+using Analytics.API.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Data.DTO
+namespace Analytics.API.Data.DTO
 {
     
     public class ModelMetericsDTO

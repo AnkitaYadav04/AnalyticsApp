@@ -1,14 +1,14 @@
-﻿using AngaloAmericanAnalytics.API.Core.Helpers;
-using AngaloAmericanAnalytics.API.Core.Interfaces.Database;
-using AngaloAmericanAnalytics.API.Core.Interfaces.Logic;
-using AngaloAmericanAnalytics.API.Data.DTO;
-using AngaloAmericanAnalytics.API.Models;
-using AngaloAmericanAnalytics.API.Models.Common;
+﻿using Analytics.API.Core.Helpers;
+using Analytics.API.Core.Interfaces.Database;
+using Analytics.API.Core.Interfaces.Logic;
+using Analytics.API.Data.DTO;
+using Analytics.API.Models;
+using Analytics.API.Models.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Logic.Implementation
+namespace Analytics.API.Logic.Implementation
 {
     public class ModelMetriceLogic : IModelMetriceLogic
     {
@@ -33,7 +33,7 @@ namespace AngaloAmericanAnalytics.API.Logic.Implementation
                         TotalPnLLTD = pnlLtdValue.currentPnlLtd,
                         //PnlLtds = pnlLtdValue.PnlLtds,
                         DrawdownYTD = drawdownYTD,
-                        Details = response.Details.OrderBy(x => x.Date).Select(details =>   // technically this record should be fetch on today day but as
+                        Details = response.Details.OrderByDescending(x => x.Date).Select(details =>   // technically this record should be fetch on today day but as
                               new ModelDetails
                               {
                                   Price = details.Price,

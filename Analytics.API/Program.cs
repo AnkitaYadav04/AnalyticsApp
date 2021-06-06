@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API
+namespace Analytics.API
 {
     public class Program
     {

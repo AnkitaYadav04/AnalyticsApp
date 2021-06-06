@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Core.Helpers
+namespace Analytics.API.Core.Helpers
 {
     public static class MetriceCalculationHelper
     {
         public  static double CalculateDrawdownYTD(IEnumerable<double> pnlLtd)
         {
-            double maxpnlLtd = pnlLtd.Select(x => x).Max();
+            double peakpnlLtd = pnlLtd.Select(x => x).Max();
             double currentPnLYTD = pnlLtd.LastOrDefault();
-            double DrawdownYTD = currentPnLYTD - maxpnlLtd;
-            CalculateVAR(pnlLtd);
+            double DrawdownYTD = currentPnLYTD - peakpnlLtd;
+
             return DrawdownYTD;
         }
 
@@ -25,7 +25,7 @@ namespace AngaloAmericanAnalytics.API.Core.Helpers
 
         }
 
-        public static double CalculateVAR(IEnumerable<double> pnlLtd)
+        public static double CalculateVAR(List<double> pnlLtd)
         {
             // Calculate the returns of the closing price Returns = Today’s Price -Yesterday’s Price / Yesterday’s Price
             //Calculate the mean of the returns using the average function
@@ -33,23 +33,27 @@ namespace AngaloAmericanAnalytics.API.Core.Helpers
             // Finally, we calculate the VaR for 90, 95, and 99 confidence level
             //     using NORM.INV function. This function has three parameters: probability, mean, and standard deviation.In probability,
             //     we use 0.1, 0.05, 0.01 respectively for the VaR(90), VaR(95), and VaR(99)
-            List<double> list = new List<double>() { 10, 15, 17, 27 };
+            
+            List<double> returns = CalculateReturns(pnlLtd);
+            var average = returns.Average();
+            var standardDeviation = StandardDeviation(returns);
 
-
-            var result = (from e in list
-
-                          let nextindex = list.IndexOf(e) + 1
-
-                          let nextelement = list.ElementAt(nextindex == list.Count ? nextindex - 1 : nextindex)
-
-                          select ((e - nextelement)/ nextelement)).ToList();
-
-            result.RemoveAt(list.Count - 1);
-
-            var res = result;
-            var average = res.Average();
-            var standardDeviation = StandardDeviation(result);
             return 0;
+        }
+
+        private static List<double> CalculateReturns(List<double> list)
+        {
+            var response  = (from e in list
+
+                    let nextindex = list.IndexOf(e) + 1
+
+                    let nextelement = list.ElementAt(nextindex == list.Count ? nextindex - 1 : nextindex)
+
+                    select ((e - nextelement) / nextelement)).ToList();
+
+            response.RemoveAt(response.Count - 1);
+
+            return response;
         }
 
         public static double StandardDeviation(List<double> numbers)

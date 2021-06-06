@@ -1,4 +1,4 @@
-﻿using AngaloAmericanAnalytics.API.Models;
+﻿using Analytics.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Controllers
+namespace Analytics.API.Controllers
 {
     //public class HomeController : Controller
     //{

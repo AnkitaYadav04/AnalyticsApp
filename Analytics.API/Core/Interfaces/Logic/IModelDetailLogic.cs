@@ -1,10 +1,10 @@
-﻿using AngaloAmericanAnalytics.API.Data.Entity;
+﻿using Analytics.API.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Logic.Interface
+namespace Analytics.API.Logic.Interface
 {
     public interface IModelDetailLogic
     {

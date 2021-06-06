@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AngaloAmericanAnalytics.API.Models.Common
+namespace Analytics.API.Models.Common
 {
     public class PnLYTDDetails
     {

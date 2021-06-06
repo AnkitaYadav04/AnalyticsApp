@@ -1,6 +1,6 @@
 using System;
 
-namespace AngaloAmericanAnalytics.API.Models
+namespace Analytics.API.Models
 {
     public class ErrorViewModel
     {

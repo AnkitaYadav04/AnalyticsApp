@@ -1,5 +1,6 @@
-﻿using AngaloAmericanAnalytics.API.Core.Interfaces.Logic;
-using AngaloAmericanAnalytics.API.Models;
+﻿using Analytics.API.Core.Interfaces.Logic;
+using Analytics.API.Models;
+using Analytics.API.Models.ViewModel.Analytics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Controllers
+namespace Analytics.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,13 +1,13 @@
-﻿using AngaloAmericanAnalytics.API.Core.Interfaces.Database;
-using AngaloAmericanAnalytics.API.Core.Interfaces.Logic;
-using AngaloAmericanAnalytics.API.Models;
-using AngaloAmericanAnalytics.API.Models.DTO;
+﻿using Analytics.API.Core.Interfaces.Database;
+using Analytics.API.Core.Interfaces.Logic;
+using Analytics.API.Models;
+using Analytics.API.Models.DTO;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Logic.Implementation
+namespace Analytics.API.Logic.Implementation
 {
     public class HistoryLogic : IHistoryLogic
     {

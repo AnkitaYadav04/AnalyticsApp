@@ -1,8 +1,8 @@
-﻿using AngaloAmericanAnalytics.API.Models;
+﻿using Analytics.API.Models.ViewModel.Analytics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Core.Interfaces.Logic
+namespace Analytics.API.Core.Interfaces.Logic
 {
     public interface IAnalyticsLogic
     {

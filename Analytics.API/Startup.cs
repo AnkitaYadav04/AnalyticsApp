@@ -1,8 +1,8 @@
-using AngaloAmericanAnalytics.API.Core.Interfaces.Database;
-using AngaloAmericanAnalytics.API.Core.Interfaces.Logic;
-using AngaloAmericanAnalytics.API.Data;
-using AngaloAmericanAnalytics.API.Data.Repository;
-using AngaloAmericanAnalytics.API.Logic.Implementation;
+using Analytics.API.Core.Interfaces.Database;
+using Analytics.API.Core.Interfaces.Logic;
+using Analytics.API.Data;
+using Analytics.API.Data.Repository;
+using Analytics.API.Logic.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 
-namespace AngaloAmericanAnalytics.API
+namespace Analytics.API
 {
     public class Startup
     {
@@ -50,7 +50,7 @@ namespace AngaloAmericanAnalytics.API
 
             services.AddSwaggerGen();
             services.AddControllersWithViews();
-            services.AddDbContext<AngaloAmericanAnalyticsDbContext>(options =>
+            services.AddDbContext<AnalyticsDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Database")));
             services.AddScoped<IHistoryLogic, HistoryLogic>();
             services.AddScoped<IModelMetriceLogic, ModelMetriceLogic>();

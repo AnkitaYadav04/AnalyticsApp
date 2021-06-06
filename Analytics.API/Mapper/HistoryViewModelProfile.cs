@@ -1,8 +1,8 @@
-﻿using AngaloAmericanAnalytics.API.Models;
-using AngaloAmericanAnalytics.API.Models.DTO;
+﻿using Analytics.API.Models;
+using Analytics.API.Models.DTO;
 using AutoMapper;
 
-namespace AngaloAmericanAnalytics.API.Mapper
+namespace Analytics.API.Mapper
 {
     public class HistoryViewModelProfile : Profile
     {

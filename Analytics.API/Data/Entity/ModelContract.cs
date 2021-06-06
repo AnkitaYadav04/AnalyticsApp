@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Data.Entity
+namespace Analytics.API.Data.Entity
 {
     public class ModelContract
     {

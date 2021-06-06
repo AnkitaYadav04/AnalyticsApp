@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "AngaloAmericanAnalytics.API": {
+    "Analytics.API": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Models
+namespace Analytics.API.Models
 {
     public class HistoryViewModel
     {

@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Analytics.API.Models.Common
+namespace Analytics.API.Models.ViewModel.Analytics
 {
-    public class ModelDetails
+    public class AnalyticsDetailsViewModel
     {
         public double CurrentPosition { get; set; }
         public double PnlDaily { get; set; }
         public double Price { get; set; }
         public double NewTradeAction { get; set; }
         public DateTime Date { get; set; }
-        public string Contract { get; set; }
     }
 }
-    

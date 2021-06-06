@@ -1,13 +1,15 @@
-﻿using AngaloAmericanAnalytics.API.Core.Interfaces.Database;
-using AngaloAmericanAnalytics.API.Core.Interfaces.Logic;
-using AngaloAmericanAnalytics.API.Models;
+﻿using Analytics.API.Core.Interfaces.Database;
+using Analytics.API.Core.Interfaces.Logic;
+using Analytics.API.Data.DTO;
+using Analytics.API.Models;
+using Analytics.API.Models.ViewModel.Analytics;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngaloAmericanAnalytics.API.Logic.Implementation
+namespace Analytics.API.Logic.Implementation
 {
 
     public class AnalyticsLogic : IAnalyticsLogic
@@ -30,7 +32,7 @@ namespace AngaloAmericanAnalytics.API.Logic.Implementation
                     Commodity = response.Commodity,
                     Model = response.Model,
                     Details = response.Details.Select(y =>
-                        new AnalyticsDetails
+                        new AnalyticsDetailsViewModel
                         {
                             Price = y.Price,
                             PnlDaily = y.PnlDaily,
