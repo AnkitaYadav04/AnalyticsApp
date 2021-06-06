@@ -32,13 +32,14 @@ namespace Analytics.API.Logic.Implementation
                 {
                     Commodity = response.Commodity?.Trim(),
                     Model = response.Model?.Trim(),
-                    Details = response.Details.Select(y =>
+                    Details = response.Details.Select(details =>
                         new AnalyticsDetailsViewModel
                         {
-                            Price = y.Price,
-                            PnlDaily = y.PnlDaily,
-                            CurrentPosition = y.CurrentPosition,
-                            Date = y.Date
+                            Price = details.Price,
+                            PnlDaily = details.PnlDaily,
+                            CurrentPosition = details.CurrentPosition,
+                            Date = details.Date,
+                            NewTradeAction = details.NewTradeAction
                         }),
 
                 });
